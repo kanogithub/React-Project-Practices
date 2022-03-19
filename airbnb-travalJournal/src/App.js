@@ -1,23 +1,17 @@
-import Navbar from './components/Navbar'
-import Card from './components/Card'
-import data from './assets/data'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Travel from './pages/Travel'
+import Experiences from './pages/Experiences'
 
 function App() {
-	const cardList = data.map((item, index, array) => {
-		const showHr = index < array.length - 1
-		return (
-			<>
-				<Card {...item} />
-				{showHr && <hr />}
-			</>
-		)
-	})
-
 	return (
-		<div className='travel-list'>
-			<Navbar />
-			<div className='container'>{cardList}</div>
-		</div>
+		<>
+			<Router>
+				<Routes>
+					<Route path='/' element={<Travel />}></Route>
+					<Route path='/exper' element={<Experiences />}></Route>
+				</Routes>
+			</Router>
+		</>
 	)
 }
 
