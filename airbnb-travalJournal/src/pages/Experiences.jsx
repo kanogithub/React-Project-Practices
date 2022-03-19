@@ -22,7 +22,7 @@ export default function App() {
 			setListMove = true
 		})
 
-		cardList.addEventListener('mousemove', (e) => {
+		document.addEventListener('mousemove', (e) => {
 			if (setListMove) {
 				const setPosition = e.clientX - preMouseX
 				cardList.scrollLeft = defaultX - setPosition
