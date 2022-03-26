@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { FaRegImages } from 'react-icons/fa'
 
 export default function Meme() {
 	const [meme, setMeme] = useState({
@@ -51,7 +52,7 @@ export default function Meme() {
 					onChange={handleChange}
 				/>
 				<button className='form-button' onClick={getMemeImage}>
-					Get a new meme image 🖼
+					Get a new meme image <FaRegImages />
 				</button>
 			</div>
 			<div className='meme'>
