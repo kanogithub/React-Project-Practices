@@ -38,13 +38,16 @@ h3 {
 }
 
 .diez {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	align-items: center;
+	justify-items: center;
+	padding: 6px;
 	height: 50px;
 	width: 50px;
 	background: #fff;
 	text-align: center;
-	line-height: 50px;
-	font-size: 24px;
-	font-weight: bolder;
 	border-radius: 5px;
 	box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
 }
@@ -67,9 +70,13 @@ h3 {
 	margin: 1.5rem 0;
 }
 
-button {
+.button {
 	border: none;
 	transition: 150ms;
+}
+
+.button:active {
+	transform: scale(0.95);
 }
 
 button:active {
@@ -86,4 +93,26 @@ button.roll {
 	margin-top: 0.5rem;
 	margin-bottom: 2rem;
 	box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+}
+
+.marker {
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+}
+
+.black {
+	background-color: black;
+}
+
+.appframe {
+	position: relative;
+}
+
+.recorder {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 1.5rem;
+	font-weight: 600;
 }
