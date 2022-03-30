@@ -69,10 +69,11 @@ h3 {
 
 button {
 	border: none;
+	transition: 150ms;
 }
 
-button:focus {
-	outline: 0;
+button:active {
+	transform: scale(0.95);
 }
 
 button.roll {
