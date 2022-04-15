@@ -32,6 +32,18 @@ body {
 	z-index: -1;
 	width: 100%;
 	height: 100%;
+	border-radius: 15px;
+}
+
+.background-layout::after {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+	outline-offset: -3px;
+	outline: #a8bad078 double 1px;
 }
 
 .lemon {
@@ -41,6 +53,7 @@ body {
 	background-image: url('./assets/lemon.svg');
 	background-repeat: no-repeat;
 	background-position: top right;
+	border-radius: 15px;
 }
 
 .baby {
@@ -50,6 +63,7 @@ body {
 	background-image: url('./assets/baby.svg');
 	background-repeat: no-repeat;
 	background-position: bottom left;
+	border-radius: 15px;
 }
 
 .quiz-layout {
@@ -57,7 +71,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	padding: 2rem 4rem;
-	z-index: 0;
+	z-index: 5;
 	min-height: 550px;
 	min-width: 550px;
 }
