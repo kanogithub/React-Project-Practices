@@ -4,10 +4,11 @@ import Dies from './Dies'
 
 function DiesContainer() {
 	const { dies, handleHoding } = useDiesContext()
+	console.log(useDiesContext())
 
 	return useMemo(() => {
 		/** Container */
-		console.log('Dies Container Rendered')
+		// console.log('Dies Container Rendered')
 
 		return (
 			<div className='diesContainer flex flex-center flex-column'>

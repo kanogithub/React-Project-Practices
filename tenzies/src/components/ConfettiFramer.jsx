@@ -7,7 +7,7 @@ function ConfettiFramer() {
 
 	return useMemo(() => {
 		/** Confetti */
-		console.log('Confetti', attemp)
+		// console.log('Confetti', attemp)
 
 		return attemp.isFinish && <Confetti />
 	}, [attemp])

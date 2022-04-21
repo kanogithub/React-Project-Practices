@@ -7,7 +7,7 @@ import RollButton from './components/RollButton'
 
 export default function App() {
 	/** App */
-	console.log('App rendered')
+	// console.log('App rendered')
 
 	return (
 		<DiesProvider>

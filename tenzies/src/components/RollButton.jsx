@@ -6,7 +6,7 @@ function RollButton() {
 
 	return useMemo(() => {
 		/** RollButton */
-		console.log('Button Rendered')
+		// console.log('Button Rendered')
 
 		return (
 			<button className='roll' onClick={isFinish ? resetGame : rollIt}>

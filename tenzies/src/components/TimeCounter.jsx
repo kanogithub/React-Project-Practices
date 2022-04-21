@@ -20,7 +20,7 @@ function TimeCounter() {
 
 	return useMemo(() => {
 		/** Timer */
-		console.log('Timer Rnedered')
+		// console.log('Timer Rnedered')
 
 		return (
 			<div>

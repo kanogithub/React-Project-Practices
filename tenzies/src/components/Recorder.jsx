@@ -6,7 +6,7 @@ function Recorder() {
 
 	return useMemo(() => {
 		/** Recorder */
-		console.log('Recorder Rendered')
+		// console.log('Recorder Rendered')
 
 		return <div className='recorder'>Best Record: {bestRecord}</div>
 	}, [bestRecord])
