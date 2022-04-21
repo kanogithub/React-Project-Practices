@@ -4,7 +4,7 @@ function UseRefExample1() {
 			<form action=''>
 				<label htmlFor='name'>Name</label>
 				<input type='text' id='name' className='form-control-mb-2' />
-				<button className='btn btn-primary'></button>
+				<button className='btn btn-primary'>Submit</button>
 			</form>
 		</div>
 	)
