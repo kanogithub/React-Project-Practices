@@ -1,15 +1,17 @@
 import { useState, useEffect, useRef } from 'react'
 
 function UseRefExample2() {
-	// useRef can be used in useEffect to store previous value
+	// useRef can be used in useEffect to store previous value when rendering
 	const [name, setName] = useState('')
 	const renders = useRef(1)
 	const prevName = useRef()
 
 	useEffect(() => {
+		console.log('useEffect')
 		renders.current = renders.current + 1
 		prevName.current = name
 	}, [name])
+	console.log('rendered')
 
 	return (
 		<div className='m-5'>
