@@ -1,9 +1,9 @@
-import UseRefExample3 from './components/UseRefExample3'
+import CustomHookUseLocalStorage from './components/CustomHook_useLocalStorage'
 
 function App() {
 	return (
 		<div className='container mt-5'>
-			<UseRefExample3 />
+			<CustomHookUseLocalStorage />
 		</div>
 	)
 }
