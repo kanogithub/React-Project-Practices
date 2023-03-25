@@ -1,5 +1,8 @@
-import { useEffect, useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { BsFillLightningChargeFill } from 'react-icons/bs'
+import styled from 'styled-components'
+
+// TSX Components
 import ListGroup from './components/ListGroup'
 import Alert from './components/Alert'
 import Button from './components/Button'
@@ -7,25 +10,36 @@ import Like from './components/Like'
 import NavBar from './components/NavBar'
 import Cart from './components/Cart'
 import ExpandableText from './components/ExpandableText'
-import apiClient from './services/api-Client'
 
-type AlertType = 'primary' | 'secondary' | 'warning'
+// Type from other module
+import userService, { UserType } from './services/user-service'
+import { AlertType } from './components/Alert'
 
-export interface User {
-	id: number
-	name: string
-}
+// Custom Hooks
+import useUsers from './hooks/useUsers'
+import useAlert from './hooks/useAlert'
+
+// Styled
+const SpinnerDiv = styled.div`
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`
 
 function App() {
-	const [user, setUser] = useState<User[]>([])
-	const [alertText, setAlertText] = useState('')
-	const [alertColor, setAlertColor] = useState<AlertType>('primary')
 	const [cartItems, setCartItems] = useState(['Product1', 'Product2'])
+	const { alertText, alertColor, setAlertText, setAlertColor } = useAlert()
+	const { users, setUsers, isLoading, setIsLoading } = useUsers()
 
-	var selectedUser = useRef<User>()
+	// To save the returned selected user
+	var selectedUser = useRef<UserType>()
 
 	// Event handler
-	const handleSelectItem = (_user: User) => {
+	const handleSelectItem = (_user: UserType) => {
 		selectedUser.current = _user
 	}
 	const handleClearItems = () => {
@@ -40,10 +54,12 @@ function App() {
 	const addUser = () => {
 		const _user = { id: 0, name: 'Mosh' }
 
-		apiClient
-			.post<User>('/users', _user)
+		setIsLoading(true)
+
+		userService
+			.create(_user)
 			.then(({ data: theAddedUser }) => {
-				setUser([...user, theAddedUser])
+				setUsers([...users, theAddedUser])
 				setAlertColor('primary')
 				setAlertText('User add after post request success')
 			})
@@ -51,17 +67,20 @@ function App() {
 				setAlertColor('warning')
 				setAlertText(err.message)
 			})
+			.finally(() => setIsLoading(false))
 	}
 
 	// Delete User
 	const deleteUser = () => {
 		if (!selectedUser.current) return
 
-		apiClient
-			.delete('/users/' + selectedUser.current.id)
+		setIsLoading(true)
+
+		userService
+			.delete(selectedUser.current.id)
 			.then(() => {
-				setUser(
-					user.filter(
+				setUsers(
+					users.filter(
 						(_user) => _user.id !== selectedUser.current?.id
 					)
 				)
@@ -72,24 +91,22 @@ function App() {
 				setAlertColor('warning')
 				setAlertText(err.message)
 			})
+			.finally(() => setIsLoading(false))
 	}
-
-	useEffect(() => {
-		// Fetch User at very first
-		apiClient
-			.get<User[]>('/users')
-
-			.then(({ data }) => {
-				setUser(data)
-				setAlertColor('secondary')
-				setAlertText('Get User data and update.')
-			})
-	}, [])
 
 	return (
 		<>
+			{isLoading && (
+				<SpinnerDiv>
+					<div
+						style={{ width: '4.5rem', height: '4.5rem' }}
+						className='spinner-border'
+					/>
+				</SpinnerDiv>
+			)}
+
 			<ListGroup
-				items={user}
+				items={users}
 				heading={'User List'}
 				onSelectItem={handleSelectItem}
 			/>

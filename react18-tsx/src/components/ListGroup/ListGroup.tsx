@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './ListGroup.module.css'
 import styled from 'styled-components'
-import { User } from '../../App'
+import { UserType } from '../../services/user-service'
 
 interface ListItemProps {
 	active: boolean
@@ -16,9 +16,9 @@ const List = styled.li<ListItemProps>`
 `
 
 interface Props {
-	items: User[]
+	items: UserType[]
 	heading: string
-	onSelectItem: (item: User) => void
+	onSelectItem: (item: UserType) => void
 }
 
 function ListGroup({ items, heading, onSelectItem }: Props) {
